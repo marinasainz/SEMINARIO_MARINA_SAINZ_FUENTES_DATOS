@@ -1,6 +1,66 @@
 #CASO 2: VER COMO INFLUYE EL SEXO EN LA APARICION DE ENFERMEDADES
 #SEGUN LA ACTIVIDAD ECONOMICA
 
+library(readr)
+library(dplyr)
+library(ggplot2)
+
+#View(tablasCompletas)
+#CASO 2: IMPACTO DE LA ACTIVIDAD ECONOMICA EN LA APARICION DE ENF
+#MUJERES FRENTE A LAS ACTIVIDADES ECONOMICAS
+tablasCaso3mujTotal<- tablasCompletas[tablasCompletas$`Sexo`=="Mujeres" ,]
+
+#View(tablasCaso3muj)
+#elimino duplicados
+caso3aSinDupMujeresTotal<-distinct(tablasCaso3mujTotal)
+#View(caso2SinDup)
+
+
+
+GraficaMT <- ggplot(data = caso3aSinDupMujeresTotal, aes(x = `Enfermos en porcentaje`, y = `Enfermedades`))+
+  ggtitle("Enf. MUJERES/ACTIVIDAD")+
+  geom_point(aes(colour = `Actividad económica`))
+#GraficaMT
+
+
+
+#HOMBRES FRENTE A LAS ACTIVIDADES ECONOMICAS
+tablasCaso3homTotal<- tablasCompletas[tablasCompletas$`Sexo`=="Hombres" ,]
+
+#View(tablasCaso3muj)
+#elimino duplicados
+caso3aSinDupHombresTotal<-distinct(tablasCaso3homTotal)
+#View(caso2SinDup)
+
+
+
+GraficaHT <- ggplot(data = caso3aSinDupHombresTotal, aes(x = `Enfermos en porcentaje`, y = `Enfermedades`))+
+  ggtitle("Enf. HOMBRES/ ACTIVIDAD")+
+  geom_point(aes(colour = `Actividad económica`))
+#GraficaHT
+
+```
+<font size="6"> 
+  <span style="color:cadetblue">
+  <span style="color: RED">
+  *RESPECTO A LAS MUJERES *
+  </span>
+  
+  </font>
+  <br>
+  ```{r,  fig.height=3, fig.dim=3}
+GraficaMT
+#graficaHombres
+
+
+
+
+
+
+
+
+#otra forma de hacerlo es esta
+
 #a. mujeres
 #TRABAJANDO
 library(ggplot2)
