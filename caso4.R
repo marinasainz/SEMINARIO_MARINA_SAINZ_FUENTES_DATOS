@@ -1,3 +1,8 @@
+library(readr)
+library(dplyr)
+library(ggplot2)
+
+
 #caso jubilados
 casoJubilados<-select( .data  =  tablasCompletas , Sexo : `Actividad económica` )
 
@@ -6,75 +11,124 @@ casoJubilados<-select( .data  =  tablasCompletas , Sexo : `Actividad económica`
 tablacasoJubilados<- casoJubilados[casoJubilados$`Sexo`=="Mujeres" &
                                      casoJubilados$`Edad del fumador`=="De 65 y más años"&
                                      casoJubilados$`Actividad económica`=="Jubilado/a o prejubilado/a",]
-View(tablacasoJubilados)
+#View(tablacasoJubilados)
 
 jubilados<-distinct(tablacasoJubilados)
-View(jubilados)
+#View(jubilados)
 #PRUEBA: CASO 1
 #A: estudios bajos
 jubBajo<- jubilados[jubilados$`Nivel de estudios`=="Básico e inferior",]
 
-View(jubBajo)
+#View(jubBajo)
 
 
-#****graficas
-grafprr1<-ggplot(data = prr1A, aes(x=`Total fumadores`, y =`Consumo de tabaco`)) + geom_point(colour = "palevioletred2") + geom_smooth(method = "lm", formula = y~poly(x,1), colour = "red", se = TRUE)
-grafprr1
-#B: estudios medios
+
+
+#mujeres jubiladas con estudios bajos: ESTA BIEN!!!!!!!!!
+GrafJubMujInf<-ggplot(data=jubBajo, aes(x=`Consumo de tabaco`, y=`Total fumadores`), fill = "RED") + 
+  geom_bar(stat="identity", position="dodge")+
+  labs( title = "FUMADORAS CON ESTUDIOS BAJOS",
+        x = "Nivel de consumo",
+        y = "Total fumadoras")+
+  geom_bar(stat="identity", color = "blue",fill="steelblue") + theme_minimal()+
+  theme (plot.title = element_text(size=rel(2),   color="darkslategray4",hjust = 0.5,face="bold"))
+
+#GrafJubMujInf
+#
+#
+
+#
+
+
+#B: estudios medios: BIEN
 jubMedioMuj<- jubilados[jubilados$`Nivel de estudios`=="Intermedio",]
 
-View(jubMedioMuj)
+#View(jubMedioMuj)
 
+#grafica buena
+GrafJubMujMed<-ggplot(data=jubMedioMuj, aes(x=`Consumo de tabaco`, y=`Total fumadores`), fill = "RED") + 
+  geom_bar(stat="identity", position="dodge")+
+  labs( title = "FUMADORAS CON ESTUDIOS MEDIOS",
+        x = "Nivel de consumo",
+        y = "Total fumadoras")+
+  geom_bar(stat="identity", color = "blue",fill="steelblue") + theme_minimal()+
+  theme (plot.title = element_text(size=rel(2),   color="darkslategray4",hjust = 0.5,face="bold"))
 
+#GrafJubMujMed
 
-grafprr1B<-ggplot(data = prr1B, aes(x=`Total fumadores`, y =`Consumo de tabaco`)) + geom_point(colour = "palevioletred2") + geom_smooth(method = "lm", formula = y~poly(x,1), colour = "red", se = TRUE)
-grafprr1B
 
 #C: estudios superiores
 jubSupMuj<- jubilados[jubilados$`Nivel de estudios`=="Superior",]
 
-View(jubSupMuj)
+#View(jubSupMuj)
 
 
+GrafJubMujSub<-ggplot(data=jubSupMuj, aes(x=`Consumo de tabaco`, y=`Total fumadores`), fill = "RED") + 
+  geom_bar(stat="identity", position="dodge")+
+  labs( title = "FUMADORAS CON ESTUDIOS ALTOS",
+        x = "Nivel de consumo",
+        y = "Total fumadoras")+
+  geom_bar(stat="identity", color = "blue",fill="steelblue") + theme_minimal()+
+  theme (plot.title = element_text(size=rel(2),   color="darkslategray4",hjust = 0.5,face="bold"))
 
+#GrafJubMujSub
 
-grafprr1c<-ggplot(data = prr1c, aes(x=`Total fumadores`, y =`Consumo de tabaco`)) + geom_point(colour = "palevioletred2") + geom_smooth(method = "lm", formula = y~poly(x,1), colour = "red", se = TRUE)
-grafprr1c
 
 #HOMBRESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 tablacasoJubiladoshOMBRES<- casoJubilados[casoJubilados$`Sexo`=="Hombres" &
                                             casoJubilados$`Edad del fumador`=="De 65 y más años"&
                                             casoJubilados$`Actividad económica`=="Jubilado/a o prejubilado/a",]
-View(tablacasoJubiladoshOMBRES)
+#View(tablacasoJubiladoshOMBRES)
 
 jubiladosHomb<-distinct(tablacasoJubiladoshOMBRES)
-View(jubiladosHomb)
+#View(jubiladosHomb)
+
 #A: estudios bajos
 jubBajoH<- jubiladosHomb[jubiladosHomb$`Nivel de estudios`=="Básico e inferior",]
 
-View(jubBajoH)
+#View(jubBajoH)
 
+#GRAFICA BUENA
+GrafJubHominf<-ggplot(data=jubBajoH, aes(x=`Consumo de tabaco`, y=`Total fumadores`), fill = "RED") + 
+  geom_bar(stat="identity", position="dodge")+
+  labs( title = "FUMADORES CON ESTUDIOS BAJOS",
+        x = "Nivel de consumo",
+        y = "Total fumadores")+
+  geom_bar(stat="identity", color = "red",fill="red") + theme_minimal()+
+  theme (plot.title = element_text(size=rel(2),   color="red",hjust = 0.5,face="bold"))
 
-#****graficas
-grafprr1<-ggplot(data = prr1A, aes(x=`Total fumadores`, y =`Consumo de tabaco`)) + geom_point(colour = "palevioletred2") + geom_smooth(method = "lm", formula = y~poly(x,1), colour = "red", se = TRUE)
-grafprr1
+#GrafJubHominf
+
 #B: estudios medios
 jubMedioHom<- jubiladosHomb[jubiladosHomb$`Nivel de estudios`=="Intermedio",]
 
-View(jubMedioHom)
+#View(jubMedioHom)
 
+GrafJubHomMed<-ggplot(data=jubMedioHom, aes(x=`Consumo de tabaco`, y=`Total fumadores`), fill = "RED") + 
+  geom_bar(stat="identity", position="dodge")+
+  labs( title = "FUMADORES CON ESTUDIOS MEDIOS",
+        x = "Nivel de consumo",
+        y = "Total fumadores")+
+  geom_bar(stat="identity", color = "red",fill="red") + theme_minimal()+
+  theme (plot.title = element_text(size=rel(2),   color="red",hjust = 0.5,face="bold"))
 
+#GrafJubHomMed
 
-grafprr1B<-ggplot(data = prr1B, aes(x=`Total fumadores`, y =`Consumo de tabaco`)) + geom_point(colour = "palevioletred2") + geom_smooth(method = "lm", formula = y~poly(x,1), colour = "red", se = TRUE)
-grafprr1B
 
 #C: estudios superiores
 jubSupHom<- jubiladosHomb[jubiladosHomb$`Nivel de estudios`=="Superior",]
 
-View(jubSupHom)
+#View(jubSupHom)
 
+GrafJubHomSup<-ggplot(data=jubSupHom, aes(x=`Consumo de tabaco`, y=`Total fumadores`), fill = "RED") + 
+  geom_bar(stat="identity", position="dodge")+
+  labs( title = "FUMADORES CON ESTUDIOS SUPERIORES",
+        x = "Nivel de consumo",
+        y = "Total fumadores")+
+  geom_bar(stat="identity", color = "red",fill="red") + theme_minimal()+
+  theme (plot.title = element_text(size=rel(2),   color="red",hjust = 0.5,face="bold"))
 
+#GrafJubHomSup
+#
 
-
-grafprr1c<-ggplot(data = prr1c, aes(x=`Total fumadores`, y =`Consumo de tabaco`)) + geom_point(colour = "palevioletred2") + geom_smooth(method = "lm", formula = y~poly(x,1), colour = "red", se = TRUE)
-grafprr1c
+#fin jubilados
