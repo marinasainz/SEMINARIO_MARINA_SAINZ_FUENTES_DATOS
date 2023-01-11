@@ -130,7 +130,7 @@ GrafJubHomSup<-ggplot(data=jubSupHom, aes(x=`Consumo de tabaco`, y=`Total fumado
 
 #GrafJubHomSup
 #
-
+#
 #fin jubilados 
 #
 #
