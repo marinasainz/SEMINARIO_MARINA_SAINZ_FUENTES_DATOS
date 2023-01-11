@@ -1,0 +1,828 @@
+---
+title: "<font size = 8>__APARICIÓN DE ENFERMEDADES. TABAQUISMO__</font>"
+subtitle: "<font size = 3> Repositorio: [GitHub](https://github.com/marinasainz/SEMINARIO_MARINA_SAINZ_FUENTES_DATOS) </font>"
+author:
+- name: "MARINA SAINZ BERMEJO"
+
+date: "Fecha: 2022/2023"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 6
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+<script>
+   $(document).ready(function() {
+     $head = $('#header');
+     $head.prepend('<img src=https://www.ubu.es/sites/all/themes/ubu_theme_sub/images/EscudoUBU-TL.png style=\"float: right;width: 300px;\"/>')
+   });
+</script>
+
+<style>
+.column-left{
+  float: left;
+  width: 50%;
+  text-align: left;
+}
+.column-center{
+  display: inline-block;
+  width: 33%;
+  text-align: center;
+}
+.column-right{
+  float: right;
+  width: 50%;
+  text-align:right;
+}
+</style>
+
+<div style="text-align: justify">
+
+<br>
+
+# **1. Aparición de enfermedades**
+
+<br>
+
+
+
+
+<font size="4">  
+El motivo de la aparición de la mayoría de las enfermedades o problemas de 
+salud existentes hoy en día sigue siendo todo un misterio en muchos casos.
+Su asociación de diversos factores o sus relaciones de causalidad no se 
+encuentran en su mayoría bien definidas, y, por consiguiente, comprobadas.
+
+El sexo, la edad o el estilo de vida son los factores más conocidos que marcan
+una relación más directa en la búsqueda de explicaciones biológicas de las 
+enfermedades, que permitirán crear una base para su consiguiente tratamiento.
+
+
+El estado de salud de la población, española en nuestro caso, y según el INE, indica unos porcentajes de:
+<br>
+<br>
+<div class="column-left">
+ + Un 79,3% de hombres y un 71,9% de mujeres valoran su estado de salud como muy bueno o bueno en menores de 15 años.
+ + Un 93,9% de hombres y un 90,7% de mujeres perciben su estado de salud como bueno en el grupo de 15 a 24 años.
+  + Un 72,2% de hombres y 67,9% de mujeres en el grupo de 55 a 64 años.
+  
+</div class="column-left"></font>
+
+
+
+![](https://www.elsevier.com/__data/assets/image/0011/742457/bacteria-62993960720.jpg){width=273px}
+<br>
+<br>
+<font size="4"> 
+Estas cifras pueden parecer alentadoras, o pesimistas, según quien lo mire.
+Por ello, con el fin de obtener más información entorno a las causas de la 
+aparición de enfermedades, estudiaré su relación con el sexo, la actividad 
+económica, y realizaré un subapartado para el consumo de tabaco y su posible causalidad.
+</div>
+
+</style>
+
+<div style="text-align: justify">
+
+<br>
+
+
+#  **2.Objetivos del estudio**
+
+<br>
+
+<font size="4">
+<div class="column-left">
+-	Estudiar la relación entre la aparición de enfermedades frente al sexo. 
+<br>
+-	Estudiar la influencia de la actividad económica en la aparición de enfermedades, según el sexo. 
+<br>
+-	Estudiar el consumo de tabaco en jóvenes y su posible causalidad con la aparición de enfermedades. 
+
+</div class="column-left"></font>
+![](https://www.mspbs.gov.py/dependencias/portal/fotos/e5c76a-FactoresdeRiesgo.png){width=400px}
+<br>
+<div style="text-align: justify">
+
+# **3.Archivos utilizados**
+<br>
+
+<font size="4">
+Los archivos escogidos pertenecen a la pagina oficial del Gobierno de España
+(gob.es).
+<br>
+El formato de los datos escogidos son de extension .csv.
+<br>
+He empleado dos ficheros: [Problemas o enfermedades](https://datos.gob.es/es/catalogo/ea0010587-problemas-o-enfermedades-cronicas-o-de-larga-evolucion-padecidas-en-los-ultimos-12-meses-y-diagnosticadas-por-un-medico-segun-sexo-y-relacion-con-la-actividad-economica-actual-poblacion-de-15-identificador-api-t15-p420-a2019-p01-l0-02018-px)
+y [Consumo de tabaco](https://datos.gob.es/es/catalogo/ea0010587-consumo-de-tabaco-segun-sexo-grupo-de-edad-y-nivel-de-estudios-poblacion-de-15-y-mas-anos-identificador-api-t15-p420-a2019-p06-l0-02005-px)
+
+
+<center>
+  ![](https://saludconlupa.com/media/images/shutterstock_677417245.width-1600.format-webp.webp){width=400px}
+  
+<font size="4"> 
+Estas dos tablas nos ofrecen información acerca del sexo, actividad económica,
+consumo de tabaquismo, así como de otras múltiples variables.
+</div>
+
+
+# **4.Analisis inicial de los datos**
+
+<br>
+
+## __Enfermedades__
+
+<br>
+
+
+<font size="4">
+El set [Problemas o enfermedades](https://datos.gob.es/es/catalogo/ea0010587-problemas-o-enfermedades-cronicas-o-de-larga-evolucion-padecidas-en-los-ultimos-12-meses-y-diagnosticadas-por-un-medico-segun-sexo-y-relacion-con-la-actividad-economica-actual-poblacion-de-15-identificador-api-t15-p420-a2019-p01-l0-02018-px), detalla una tabla con información acerca del sexo, actividad económica, tipo de enfermedad, presencia de la enfermedad, y su correspondiente número de pacientes enfermos.
+
+</font>
+
+<br>
+
+## __Tabaquismo__
+
+<br>
+
+<font size="4">
+El set [Consumo de tabaco](https://datos.gob.es/es/catalogo/ea0010587-consumo-de-tabaco-segun-sexo-grupo-de-edad-y-nivel-de-estudios-poblacion-de-15-y-mas-anos-identificador-api-t15-p420-a2019-p06-l0-02005-px),contiene datos acerca del sexo, edad, nivel de estudios y tipo de consumo de tabaco de los participantes.
+
+<br>
+
+## __Información inicial__
+
+<br>
+
+<font size="4">
+Antes de comenzar con los casos, llevaremos a cabo una selección de datos, aquellos relevantes para el trabajo.
+ * Respecto a la tabla enfermedad, realizaré una selección de exclusión de dos tipos de actividad económica, “Incapacitado” (pues en la segunda parte busco relaciones con el tabaco y no lo considero relacionado) y “otros” (demasiado redundante). Por último, forzaré que la presencia de la enfermedad sea que sí, ya que es el objetivo.
+ 
+* Excluiré, de ambas tablas, los valores “TOTAL” de aquellas variables que lo posean.
+* Al ser todos los tipos de las variables de las tablas de tipo “char”, y debido a que realizaré operaciones cuantitativas, he pasado dichos valores a tipo numérico, obteniendo “FIltradoTablaEnfermedad” y “FiltradoDeTablaTabaquismo”.
+* Para poder comenzar, he eliminado una serie de enfermedades que no he considerado relevantes para el estudio (ejemplo: accidentes), para reducir la cantidad de datos así como para evitar información redundante.
+* Por último, y antes de comenzar, he añadido una nueva columna a la tabla enfermedad, donde, teniendo en cuenta la información del penúltimo párrafo, he calculado el porcentaje de cada enfermedad según sus condiciones, para que se trate de un porcentaje y, al igual que en la tabla tabaquismo, se pueda trabajar con porcentajes. Esta nueva variable se denomina “Enfermos en porcentaje”. La nueva tabla se llama “tablasCompletas” y sobre ella realizare las principales operaciones.</font>
+
+<br>
+<br>
+Considerable es apuntar que,tras esta filtración, he considerado oportuno hallar el número total de pacientes enfermos totales de la muestra, una vez eliminadas las enfermedades irrelevantes, obteniendo un total de *60111,9*.
+ 
+<br>
+
+## __Datos iniciales__
+
+<br>
+
+<font size="4">
+Antes de analizar gráficas, analizaré levemente algunos datos del estudio.
+<br>
+Respecto a la *tabla tabaquismo*, hay prácticamente el mismo número de hombres que de mujeres en el estudio. La edad de los participantes se divide en tres rangos: “de 15 a 24 años”, “de 25 a 64 años”, y “de 65 y más años”. Las proporciones de presencia de cada grupo son similares, aunque dentro de esos rangos los valores varían. Se trata de la misma repartición equitativa en cuando a la variable de nivel de estudios (“Inferior”, “intermedio”, ”superior”). La variable _“Consumo de tabaco”_, sin embargo, si que presenta una gran distinción en cuanto a los valores iniciales:
+* El 21% de participantes son exfumadores.
+*	El 16.2% son fumadores diarios.
+*	El 2.51 %, fumadores ocasionales.
+*	El 60.3% nunca han fumado.</font>
+
+Todas estas informaciones han sido obtenidas mediante varias funciones de R, entre las que destacan group_by o summarise. 
+
+Respecto a la *tabla enfermedad*, por su parte, contiene más variedad de datos. Clasifica la información de la actividad económica del participante:
+
+* Los estudiantes son 33.9 participantes.
+* 556 son jubilados / prejubilados.
+* 214 realizan labores del hogar.
+* 419 se encuentran trabajando.</font>
+
+Tras la filtración de datos, el recuento dismunuye:
+
+* Los estudiantes son 19.1 participantes.
+* 516 son jubilados / prejubilados.
+* 181 realizan labores del hogar.
+* 327 se encuentran trabajando. </font>
+
+
+<br>
+
+# **5.CASOS**
+
+<br>
+
+## __CASO 1: relación entre la aparición de enfermedades frente al sexo.__
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(readr)
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+
+setwd("C:/Users/USUARIO/Documents/RSTUDIO")
+#getwd()
+
+enfTab <- read_delim("enfermedades_relacion.csv", 
+                     delim = ";", escape_double = FALSE, trim_ws = TRUE)
+
+
+
+tabTab <- read_delim("tabaquismo.csv", 
+                     delim = ";", escape_double = FALSE, trim_ws = TRUE)
+
+
+#library(dplyr)
+TabEnfermedad<-rename ( .data  = enfTab ,`Total enfermos` = Total, `Sexo persona enferma` = Sexo,
+                        `Presencia enfermedad` = `Sí o no`)
+#View(TabEnfermedad)
+
+TabTabaquismo<-rename ( .data  = tabTab ,`Total fumadores` = Total, `Sexo del fumador` = Sexo,
+                        `Edad del fumador` = Edad)
+
+FiltradoTablaEnfermedad <- TabEnfermedad[(TabEnfermedad$`Actividad económica`=="Trabajando" |
+                                            TabEnfermedad$`Actividad económica`=="Estudiando" |
+                                            TabEnfermedad$`Actividad económica`=="Jubilado/a o prejubilado/a" |
+                                            TabEnfermedad$`Actividad económica`=="Labores del hogar")&
+                                           TabEnfermedad$`Presencia enfermedad`=="Sí", ]
+#View(FiltradoTablaEnfermedad)
+FiltradoDeTablaTabaquismo <- TabTabaquismo[(TabTabaquismo$`Nivel de estudios`=="Superior" |
+                                              TabTabaquismo$`Nivel de estudios`=="Básico e inferior" |
+                                              TabTabaquismo$`Nivel de estudios`=="Intermedio" )&
+                                             (TabTabaquismo$`Edad del fumador`=="De 25 a 64 años" |
+                                                TabTabaquismo$`Edad del fumador`=="De 15 a 24 años" |
+                                                TabTabaquismo$`Edad del fumador`=="De 65 y más años")&
+                                             (TabTabaquismo$`Consumo de tabaco`=="Fumador diario" |
+                                                TabTabaquismo$`Consumo de tabaco`=="Fumador ocasional" |
+                                                TabTabaquismo$`Consumo de tabaco`=="Nunca ha fumado" |
+                                                TabTabaquismo$`Consumo de tabaco`=="Ex fumador"), ]
+
+
+int2<- gsub(",",".",FiltradoDeTablaTabaquismo$`Total fumadores`,fixed = T)
+FiltradoDeTablaTabaquismo$`Total fumadores` =as.numeric(int2)
+
+int3<- gsub(",",".",FiltradoTablaEnfermedad$`Total enfermos`,fixed = T)
+FiltradoTablaEnfermedad$`Total enfermos` =as.numeric(int3)
+
+
+FiltradoDeTablaTabaquismo<-rename ( .data  = FiltradoDeTablaTabaquismo ,
+                                    `Sexo` = `Sexo del fumador`)
+#View(FiltradoDeTablaTabaquismo)
+#enfermedad
+FiltradoTablaEnfermedad<-rename ( .data  = FiltradoTablaEnfermedad ,
+                                  `Sexo` = `Sexo persona enferma`)
+
+
+dosTab<- left_join(x=FiltradoDeTablaTabaquismo, y=FiltradoTablaEnfermedad, 
+                   by = "Sexo" )
+#View(dosTab)
+totalEnfermedades<-TabEnfermedad[(TabEnfermedad$`Enfermedades`=="Tensión alta" |
+                                    TabEnfermedad$`Enfermedades`=="Infarto de miocardio" |
+                                    TabEnfermedad$`Enfermedades`=="Angina de pecho, enfermedad coronaria" |
+                                    TabEnfermedad$`Enfermedades`=="Otras enfermedades del corazón" |
+                                    TabEnfermedad$`Enfermedades`=="Bronquitis crónica, enfisema, enfermedad pulmonar obstructiva crónica (EPOC)" |
+                                    TabEnfermedad$`Enfermedades`=="Diabetes" |
+                                    TabEnfermedad$`Enfermedades`=="Úlcera de estómago o duodeno" |
+                                    TabEnfermedad$`Enfermedades`=="Incontinencia urinaria o problemas de control de la orina" |
+                                    TabEnfermedad$`Enfermedades`=="Colesterol alto" |
+                                    TabEnfermedad$`Enfermedades`=="Estreñimiento crónico" |
+                                    TabEnfermedad$`Enfermedades`=="Cirrosis, disfunción hepática" |
+                                    TabEnfermedad$`Enfermedades`=="Depresión" |
+                                    TabEnfermedad$`Enfermedades`=="Ansiedad crónica" |
+                                    TabEnfermedad$`Enfermedades`=="Ictus (embolia, infarto cerebral, hemorragia cerebral)" |
+                                    TabEnfermedad$`Enfermedades`=="Migraña o dolor de cabeza frecuente" |
+                                    TabEnfermedad$`Enfermedades`=="Tumores malignos" |
+                                    TabEnfermedad$`Enfermedades`=="Problemas de tiroides" |
+                                    TabEnfermedad$`Enfermedades`=="Problemas del riñón" |
+                                    TabEnfermedad$`Enfermedades`=="Problemas de próstata (solo hombres)" |
+                                    TabEnfermedad$`Enfermedades`=="Problemas del periodo menopáusico (solo mujeres)")&
+                                   TabEnfermedad$`Actividad económica`=="TOTAL" &
+                                   TabEnfermedad$`Presencia enfermedad`=="Sí",]
+
+int4<- gsub(",",".",totalEnfermedades$`Total enfermos`,fixed = T)
+totalEnfermedades$`Total enfermos` =as.numeric(int4)
+
+tablasEnfRelev<-dosTab[dosTab$`Enfermedades`=="Tensión alta" |
+                         dosTab$`Enfermedades`=="Infarto de miocardio" |
+                         dosTab$`Enfermedades`=="Angina de pecho, enfermedad coronaria" |
+                         dosTab$`Enfermedades`=="Otras enfermedades del corazón" |
+                         dosTab$`Enfermedades`=="Bronquitis crónica, enfisema, enfermedad pulmonar obstructiva crónica (EPOC)" |
+                         dosTab$`Enfermedades`=="Diabetes" |
+                         dosTab$`Enfermedades`=="Úlcera de estómago o duodeno" |
+                         dosTab$`Enfermedades`=="Incontinencia urinaria o problemas de control de la orina" |
+                         dosTab$`Enfermedades`=="Colesterol alto" |
+                         dosTab$`Enfermedades`=="Estreñimiento crónico" |
+                         dosTab$`Enfermedades`=="Cirrosis, disfunción hepática" |
+                         dosTab$`Enfermedades`=="Depresión" |
+                         dosTab$`Enfermedades`=="Ansiedad crónica" |
+                         dosTab$`Enfermedades`=="Ictus (embolia, infarto cerebral, hemorragia cerebral)" |
+                         dosTab$`Enfermedades`=="Migraña o dolor de cabeza frecuente" |
+                         dosTab$`Enfermedades`=="Tumores malignos" |
+                         dosTab$`Enfermedades`=="Problemas de tiroides" |
+                         dosTab$`Enfermedades`=="Problemas del riñón" |
+                         dosTab$`Enfermedades`=="Problemas de próstata (solo hombres)" |
+                         dosTab$`Enfermedades`=="Problemas del periodo menopáusico (solo mujeres)" ,]
+#porEnfermedad
+#View(tablasEnfRelev)
+tablasCompletas<- mutate(tablasEnfRelev,`Enfermos en porcentaje`=(`Total enfermos`/60111.9)*100 )
+#View(tablasCompletas)
+
+
+
+#CASO 1: SEXO Y ENFERMEDADES: ENFERMEDADES DE MUJERES VS HOMBRES
+#a. mujeres
+
+library(ggplot2)
+#selecciono que sean mujeres(por sexo), por edad y por actividad
+tablasCaso4muj<- tablasCompletas[tablasCompletas$`Sexo`=="Mujeres" ,]
+
+#View(tablasCaso4muj)
+#elimino duplicados
+caso4SinDupMuj<-distinct(tablasCaso4muj)
+#View(tablasCaso4muj)
+
+
+#GRAFICO BIEN?SIIIIIIIIIIIIIIIIIIIIIIIIIII
+
+library(ggplot2)
+graficaMujeres<-ggplot(data = caso4SinDupMuj, aes(x =`Enfermos en porcentaje`, y = `Enfermedades`)) + 
+  geom_bar(stat="identity", position="dodge", colour ="black", fill = "red")+
+  labs( title = "ENFERMEDADES EN MUJERES",
+        x = "Porcentaje de enfermos",
+        y = "Enfermedad")+
+  theme (plot.title = element_text(size=rel(1),   color="black")) 
+#graficaMujeres
+
+
+#b.hombres
+
+#library(ggplot2)
+#selecciono que sean mujeres(por sexo), por edad y por actividad
+tablasCaso4hom<- tablasCompletas[tablasCompletas$`Sexo`=="Hombres" ,]
+
+#View(tablasCaso4hom)
+#elimino duplicados
+caso4homSinDup<-distinct(tablasCaso4hom)
+
+#View(caso4homSinDup)
+
+
+
+
+library(ggplot2)
+graficaHombres<-ggplot(data = caso4homSinDup, aes(x =`Enfermos en porcentaje`, y = `Enfermedades`)) + 
+  geom_bar(stat="identity", position="dodge", colour ="black", fill = "red")+
+  labs( title = "ENFERMEDADES EN HOMBRES",
+        x = "Porcentaje de enfermos",
+        y = "Enfermedad")+
+  theme (plot.title = element_text(size=rel(1),   color="black")) 
+#graficaHombres
+
+
+
+
+
+```
+<br>
+
+<font size="4">
+En el primer objetivo intentaré relacionar el sexo con la aparición de enfermedades, y , más que intentarlo, confirmarlo, pues ya es sabido que ciertas enfermedades sí que están asociadas a ser hombre o mujer.
+</font>
+
+<br>
+
+<center>
+  ![](https://media.elmostrador.cl/2017/04/cerebros_generos.jpg){width=350px}
+
+<div style="text-align: justify">  
+<br>
+
+<font size="4">
+Para relacionar estas dos variables, he llevado a cabo una filtración inicial de las tablas: como se ha comentado inicialmente, se han retirado ciertas enfermedades que he considerado relevantes en el objeto de estudio de este trabajo. Como resultado, he dejado muchas de las más "conocidas", tales como el colesterol, la tensión alta, la depresión, infarto al miocardio, etc.
+ </font>
+
+<br>
+
+<center>
+  ![](https://www.intramed.net/userfiles/vinetas/98237.jpg){width=300px}
+<div style="text-align: justify">  
+<br>
+<font size="4">
+Tras la extracción de esta información, se han obtenido los siguientes resultados:
+<br>
+```{r,  fig.height=3, fig.dim=3}
+graficaMujeres
+graficaHombres
+```
+<div style="text-align: justify">  
+<br>
+
+<font size="4"> 
+Se observa que si que existen diferencias significativas entre hombres y mujeres.
+
+-	mientras que la *tensión alta* es común a ambos sexos,
+-	las mujeres presentan *problemas de tiroides* altamente superiores,
+-	presentan mucha más *migraña o dolor de cabeza*,
+-	los hombres son más propensos a *infartos del miocardio*,
+-	las mujeres presentan una mayor *incontinencia urinaria*,
+-	mujeres tienen un mayor *estreñimiento crónico*,
+-	los hombres presentan mayor *diabetes*,
+-	mujeres con mas *depresión*,
+-	y mujeres con mas *ansiedad crónica*,</font>.
+
+	A priori, parece que las mujeres son más propensas a tener enfermedades por causas psicológicas y los hombres, por causas más “biológicas”, o del tipo de vida.
+<br>
+	El objetivo será ver si estos datos tienen alguna relación con el consumo de tabaco.
+</font>
+
+<br>
+<div style="text-align: justify"> 
+## __Caso 2: influencia de la actividad económica en la aparición de enfermedades, según el sexo.__
+ 
+<div style="text-align: justify"> 
+<br>
+
+<font size="4">
+En este apartado, realizaré una diferenciación al apartado anterior, incluyendo el tipo de actividad económica, que puede ser, tras la filtración: “Trabajando”, ”Estudiando”, “Labores del hogar”, y “Jubilado/prejubilado”. Por ello, haré varias gráficas y tablas para compararlas.
+<br>
+En primer lugar, evaluaré el impacto en _*MUJERES*_ de la variación de la actividad económica y su posible causalidad con la aparición de enfermedades.
+</font>
+
+<br>
+
+<center>
+
+  ![](https://www.bcn.cl/obtieneimagen?id=recursoslegales/10221.3/47709/5/Foto_Jornada_parcial_alternativa_para_estudiantes_trabajadores.jpg){width=250px}
+
+
+<br>
+
+<center>
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+
+#View(tablasCompletas)
+#CASO 2: IMPACTO DE LA ACTIVIDAD ECONOMICA EN LA APARICION DE ENF
+#MUJERES FRENTE A LAS ACTIVIDADES ECONOMICAS
+tablasCaso3mujTotal<- tablasCompletas[tablasCompletas$`Sexo`=="Mujeres" ,]
+
+#View(tablasCaso3muj)
+#elimino duplicados
+caso3aSinDupMujeresTotal<-distinct(tablasCaso3mujTotal)
+#View(caso2SinDup)
+
+
+
+GraficaMT <- ggplot(data = caso3aSinDupMujeresTotal, aes(x = `Enfermos en porcentaje`, y = `Enfermedades`))+
+  ggtitle("Enf. MUJERES/ACTIVIDAD")+
+  geom_point(aes(colour = `Actividad económica`))
+#GraficaMT
+
+
+
+#HOMBRES FRENTE A LAS ACTIVIDADES ECONOMICAS
+tablasCaso3homTotal<- tablasCompletas[tablasCompletas$`Sexo`=="Hombres" ,]
+
+#View(tablasCaso3muj)
+#elimino duplicados
+caso3aSinDupHombresTotal<-distinct(tablasCaso3homTotal)
+#View(caso2SinDup)
+
+
+
+GraficaHT <- ggplot(data = caso3aSinDupHombresTotal, aes(x = `Enfermos en porcentaje`, y = `Enfermedades`))+
+  ggtitle("Enf. HOMBRES/ ACTIVIDAD")+
+  geom_point(aes(colour = `Actividad económica`))
+#GraficaHT
+
+```
+<font size="6"> 
+<span style="color:cadetblue">
+<span style="color: RED">
+*RESPECTO A LAS MUJERES *
+</span>
+
+</font>
+<br>
+```{r,  fig.height=3, fig.dim=3}
+GraficaMT
+#graficaHombres
+```
+<div style="text-align: justify">  
+<br>
+
+<font size="4">
+Observando las proporciones, ya vemos que las mujeres jubiladas son las que aparentemente más enfermedad poseen, pero analizaremos los datos:
+
+* los estudiantes, representados de color rojo, son los que claramente menos enfermedad presentan.
+* destaca la _*tensión alta*_ en la población en general, siendo en trabajadoras (de color morado) aproximadamente el 1% de las enfermas, mientras que en trabajadoras en labores del hogar es casi un 2%, y en jubiladas ronda el 3%.
+* la _tiroides_ tambien indica una subida en jubiladas y del hogar,( <1%), pero incrementa en trabajadoras (>1%)
+* respecto a _migraña y dolor de cabeza_, en jovenes aumenta levemente, mientras que en trabajadoras ronda el 1.5 % , valor significativo.
+* la _incontinencia urinaria_ aumenta en las personas jubiladas, así como el estreñimiento.
+* la _*diabetes*_ alcanza valores más significativos con la edad.
+* La _*depresión*_ tambien es mayor en jubiladas.
+* destaca el _*colesterol*_, que sobrepasa los 2 puntos de porcentaje en jubiladas.
+* Por ultimo, la _ansiedad crónica_ la lideran las trabajadoras. </font>
+
+
+Con esta informacion, vemos que la mayoria de enfermedades afecta más a las MUJERES de *mayor edad*, destacando la tension alta y el colesterol, la depresión. 
+
+</font>
+
+<font size="6"> 
+<span style="color:cadetblue">
+<span style="color: RED">
+*RESPECTO A LOS HOMBRES *
+</span>
+
+</font>
+<br>
+```{r,  fig.height=3, fig.dim=3}
+GraficaHT
+```
+<br>
+<div style="text-align: justify">  
+<br>
+
+<font size="4">
+
+- la _*tensión alta*_ de los hombres jubilados se encuentra por encima de los 3.5 puntos, seguida de la de los trabajadores, con un 2%. Estos valores son *superiores* a los obtenidos para las mujeres.
+- la _tiroides_, por el contrario, se ve altamente reducida en este sexo, no llegando ni al 0.25%.
+- la _migraña_ sigue tomando su valor más alto en los trabajadores, alcanzando el 0.5%.
+- la _incontinencia urinaria y el extreñimiento_ también se ven más aumentados en jubilados, aunque menos que en las mujeres.
+- la _*diabetes*_, por su parte, destaca en jubilados, donde alcanza el 1.5%, mientras que en mujeres se quedaba prácticamente en el 1.
+- La _depresión_ disminuye, sin llegar siquiera al 0.5%.
+- el _*colesterol*_ alto *supera al de las mujeres*, situándose en un 2% en trabajadores y en un 2.4 en jubilados.
+- la _enfermedad pulmonar_ se sostiene entorno al 0.5% para jubilados (igual que para jubiladas). </font>
+
+Parece que, al igual que en las mujeres, los hombres jubilados presentan mayor numero de enfermedades, destancando la diabetes, el colesterol y la tensión alta.
+<br>
+Debido a ello, nos centraremos en estudiar a las personas jubiladas; e intentaré encontrar una relación de causalidad con el consumo de tabaco en dicho grupo de participantes.
+
+<br>
+
+<div style="text-align: justify"> 
+## __Caso 3:Consumo de tabaquismo en personas jubiladas.__
+
+<div style="text-align: justify"> 
+<br>
+Para finalizar, y debido a que el mayor recuento de enfermedades se encuentra en el sector de las personas prejubiladas y jubiladas, estudiaré si existe alguna relación entre el consumo de tabaco y la aparición de las enfermedades.
+<br>
+Debido a que si realizo el filtro con la variable "Sexo" se obtiene una gráfica muy poco clara, analizaré por un lado a las mujeres, y por el otro, a los hombres. Además, selecciono a los "jubilados" como nivel económico, y una franja dee dad de "65 y más años", ya que a partir de dicha edad comienza la jubilación.
+<br>
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+
+
+#caso jubilados
+casoJubilados<-select( .data  =  tablasCompletas , Sexo : `Actividad económica` )
+
+#MUJERES
+#selecciono que sean mujeres(por sexo), por edad y por actividad
+tablacasoJubilados<- casoJubilados[casoJubilados$`Sexo`=="Mujeres" &
+                                     casoJubilados$`Edad del fumador`=="De 65 y más años"&
+                                     casoJubilados$`Actividad económica`=="Jubilado/a o prejubilado/a",]
+#View(tablacasoJubilados)
+
+jubilados<-distinct(tablacasoJubilados)
+#View(jubilados)
+#PRUEBA: CASO 1
+#A: estudios bajos
+jubBajo<- jubilados[jubilados$`Nivel de estudios`=="Básico e inferior",]
+
+#View(jubBajo)
+
+
+
+
+#mujeres jubiladas con estudios bajos: ESTA BIEN!!!!!!!!!
+GrafJubMujInf<-ggplot(data=jubBajo, aes(x=`Consumo de tabaco`, y=`Total fumadores`), fill = "RED") + 
+  geom_bar(stat="identity", position="dodge")+
+  labs( title = "FUMADORAS CON ESTUDIOS BAJOS",
+        x = "Nivel de consumo",
+        y = "Total fumadoras")+
+  geom_bar(stat="identity", color = "blue",fill="steelblue") + theme_minimal()+
+  theme (plot.title = element_text(size=rel(2),   color="darkslategray4",hjust = 0.5,face="bold"))
+
+#GrafJubMujInf
+#
+#
+
+#
+
+
+#B: estudios medios: BIEN
+jubMedioMuj<- jubilados[jubilados$`Nivel de estudios`=="Intermedio",]
+
+#View(jubMedioMuj)
+
+#grafica buena
+GrafJubMujMed<-ggplot(data=jubMedioMuj, aes(x=`Consumo de tabaco`, y=`Total fumadores`), fill = "RED") + 
+  geom_bar(stat="identity", position="dodge")+
+  labs( title = "FUMADORAS CON ESTUDIOS MEDIOS",
+        x = "Nivel de consumo",
+        y = "Total fumadoras")+
+  geom_bar(stat="identity", color = "blue",fill="steelblue") + theme_minimal()+
+  theme (plot.title = element_text(size=rel(2),   color="darkslategray4",hjust = 0.5,face="bold"))
+
+#GrafJubMujMed
+
+
+#C: estudios superiores
+jubSupMuj<- jubilados[jubilados$`Nivel de estudios`=="Superior",]
+
+#View(jubSupMuj)
+
+
+GrafJubMujSub<-ggplot(data=jubSupMuj, aes(x=`Consumo de tabaco`, y=`Total fumadores`), fill = "RED") + 
+  geom_bar(stat="identity", position="dodge")+
+  labs( title = "FUMADORAS CON ESTUDIOS ALTOS",
+        x = "Nivel de consumo",
+        y = "Total fumadoras")+
+  geom_bar(stat="identity", color = "blue",fill="steelblue") + theme_minimal()+
+  theme (plot.title = element_text(size=rel(2),   color="darkslategray4",hjust = 0.5,face="bold"))
+
+#GrafJubMujSub
+
+
+#HOMBRESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+tablacasoJubiladoshOMBRES<- casoJubilados[casoJubilados$`Sexo`=="Hombres" &
+                                            casoJubilados$`Edad del fumador`=="De 65 y más años"&
+                                            casoJubilados$`Actividad económica`=="Jubilado/a o prejubilado/a",]
+#View(tablacasoJubiladoshOMBRES)
+
+jubiladosHomb<-distinct(tablacasoJubiladoshOMBRES)
+#View(jubiladosHomb)
+
+#A: estudios bajos
+jubBajoH<- jubiladosHomb[jubiladosHomb$`Nivel de estudios`=="Básico e inferior",]
+
+#View(jubBajoH)
+
+#GRAFICA BUENA
+GrafJubHominf<-ggplot(data=jubBajoH, aes(x=`Consumo de tabaco`, y=`Total fumadores`), fill = "RED") + 
+  geom_bar(stat="identity", position="dodge")+
+  labs( title = "FUMADORES CON ESTUDIOS BAJOS",
+        x = "Nivel de consumo",
+        y = "Total fumadores")+
+  geom_bar(stat="identity", color = "red",fill="red") + theme_minimal()+
+  theme (plot.title = element_text(size=rel(2),   color="red",hjust = 0.5,face="bold"))
+
+#GrafJubHominf
+
+#B: estudios medios
+jubMedioHom<- jubiladosHomb[jubiladosHomb$`Nivel de estudios`=="Intermedio",]
+
+#View(jubMedioHom)
+
+GrafJubHomMed<-ggplot(data=jubMedioHom, aes(x=`Consumo de tabaco`, y=`Total fumadores`), fill = "RED") + 
+  geom_bar(stat="identity", position="dodge")+
+  labs( title = "FUMADORES CON ESTUDIOS MEDIOS",
+        x = "Nivel de consumo",
+        y = "Total fumadores")+
+  geom_bar(stat="identity", color = "red",fill="red") + theme_minimal()+
+  theme (plot.title = element_text(size=rel(2),   color="red",hjust = 0.5,face="bold"))
+
+#GrafJubHomMed
+
+
+#C: estudios superiores
+jubSupHom<- jubiladosHomb[jubiladosHomb$`Nivel de estudios`=="Superior",]
+
+#View(jubSupHom)
+
+GrafJubHomSup<-ggplot(data=jubSupHom, aes(x=`Consumo de tabaco`, y=`Total fumadores`), fill = "RED") + 
+  geom_bar(stat="identity", position="dodge")+
+  labs( title = "FUMADORES CON ESTUDIOS SUPERIORES",
+        x = "Nivel de consumo",
+        y = "Total fumadores")+
+  geom_bar(stat="identity", color = "red",fill="red") + theme_minimal()+
+  theme (plot.title = element_text(size=rel(2),   color="red",hjust = 0.5,face="bold"))
+
+#GrafJubHomSup
+#
+
+#fin jubilados
+
+```
+<font size="6"> 
+<span style="color:cadetblue">
+<span style="color: black">
+*MUJERES JUBILADAS: TABAQUISMO Y NIVEL DE ESTUDIOS *
+</span>
+
+</font>
+<br>
+<div style="text-align: justify">  
+<br>
+
+<font size="4">
+Se presentan las tres gráficas, correspondientes a mujeres con estudios bajos, estudios medios, y estudios superiores.
+```{r,  fig.height=2, fig.dim=2}
+GrafJubMujInf
+GrafJubMujMed
+GrafJubMujSub
+```
+<br>
+<div style="text-align: justify">  
+<br>
+
+<font size="4">
+Mujeres jubiladas fumadoras por actividad económica:
+
+*	Las **mujeres con estudios bajos** han _fumado en menor medida_(87% no fumadoras, 13% han fumado alguna vez), por lo que hay menos exfumadoras, y el nivel de _fumadoras diarias es realmente pequeño(3.75%)_.
+*	Las **mujeres con estudios medios** han _fumado más_, hay un _13% de fumadoras diarias_. Han fumado alguna vez un 39%.
+*	Las **mujeres con estudios superiores** fuman _diariamente un 8.33%_, han fumado alguna vez el 35%, y un 27% son exfumadoras.</font>
+<br>
+Por tanto, el rango de personas de _**mujeres jubiladas con estudios medios**_ es el que más tabaco consume.
+</font>
+<br>
+<br>
+<font size="6"> 
+<span style="color:cadetblue">
+<span style="color: black">
+*HOMBRES JUBILADOS: TABAQUISMO Y NIVEL DE ESTUDIOS *
+</span>
+<br>
+<div style="text-align: justify">  
+<br>
+
+<font size="4">
+Se presentan las tres gráficas, correspondientes a hombres jubilados con estudios bajos, estudios medios, y estudios superiores.
+```{r,  fig.height=2, fig.dim=2}
+GrafJubHominf
+GrafJubHomMed
+GrafJubHomSup
+```
+<br>
+<div style="text-align: justify">  
+<br>
+
+<font size="4">
+Hombres jubilados fumadores por actividad económica:
+
+*	Los **hombres con estudios bajos** han fumado mucho más que las mujeres: han fumado el 63 %. _Son fumadores diarios un 11.35 %_.
+*	Los **hombres con estudios medios** han fumado el 67%. Los _fumadores diarios suman el 13.06%_ y el número de exfumadores es similar.
+*	Los **hombres con estudios superiores** fuman _diariamente un 8.75%_, similar a las mujeres, pero se trata de una cifra mucho más reducida que los hombres con menos estudios.</font>
+<br>
+Por tanto, el rango de personas de _**hombres jubilados con estudios medios**_ sigue siendo el que más tabaco consume.
+Es curioso, por su parte, ver cómo **estos niveles disminuyen muy considerablemente si aumentamos el nivel de estudios**.
+
+<font size="6"> 
+<span style="color:cadetblue">
+<span style="color: RED">
+*CONCLUSIÓN DEL CASO *
+</span>
+<br>
+<font size="4">
+Mediante estas gráficas hemos obtenido la siguiente información:
+
+*	A **niveles bajos**, el _nivel de fumadores diarios hombres(11.35%)  triplica al de mujeres (3.75%)_ , así como el de fumadores ocasionales, pero el nivel de exfumadores hombres es abrumador (el 50 % han dejado de fumar).
+*	A **niveles medios**, el _número de fumadores diarios hombres que mujeres es el mismo (13%), dato bastante relevante_. El numero de no fumadores sigue siendo altamente superior, y el 50 % de los hombres han dejado de fumar (al igual que en el caso anterior).
+*	A **niveles superiores**, el _nivel de fumadores diarios desciende significativamente (8.75%) , y es similar al de las mujeres_. Además, el 55.96% de los 65.52% iniciales hombres han dejado de fumar, contra el 27 % de las mujeres (de las que fumaban un 35%). </font>
+<br>
+
+<font size="4">
+	Por tanto, concluyo que tanto el **sexo** como el **nivel de estudios** _**tienen relación con el consumo de tabaco**_. Esto muestra que, en una relación proporcional, _los hombres fuman menos cuantos más estudios tienen_.
+El de las mujeres, sin embargo, no marca una tendencia tan diferencial, y aunque el nivel de fumadoras diarias disminuye si comparamos los estudios medios con los superiores, aquellas mujeres con estudios inferiores o básicos presentan la media más baja de fumadores.
+<br>
+<br>
+<br>
+
+Para finalizar, y teniendo en cuenta la siguiente gráfica que muestra la proporción de personas jubiladas y jubilados, y sus porcentajes de enfermedad:
+</font>
+<br>
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#ultima grafica para ver las enfermedades de los jubilados
+tablaUltima<- tablasCompletas[tablasCompletas$`Edad del fumador`=="De 65 y más años"&
+                                (tablasCompletas$`Sexo`=="Hombres"|
+                                   tablasCompletas$`Sexo`=="Mujeres" )&
+                                tablasCompletas$`Actividad económica`=="Jubilado/a o prejubilado/a",]
+#View(tablacasoJubilados)
+
+jubiladosasUlti<-distinct(tablaUltima)
+#View(jubiladosasUlti)
+
+
+
+grafUltima <- ggplot(data = jubiladosasUlti, aes(x = `Enfermos en porcentaje`, y = `Enfermedades`))+
+  ggtitle("Enf. TOTALES DE JUBILADOS")+
+  geom_point(aes(colour = `Sexo`))
+```
+```{r,  fig.height=3.5, fig.dim=3.5}
+grafUltima
+```
+<div style="text-align: justify">  
+<font size="4">
+<br>
+Es fácilmente observable que los _participantes jubilados hombres tienden a presentar un porcentaje de enfermedad superior al de las mujeres_, principalmente en cuanto a la **tensión alta, la diabetes y el colesterol alto; así como levemente en bronquitis crónica, en infartos del miocardio, y en tumores malignos**.
+Por tanto, y teniendo en cuenta la relación que hemos obtenido en cuanto a los fumadores, se podría afirmar, o, al menos, preafirmar, que _**si que podría existir una relación entre el la presencia de enfermedades,el consumo de tabaco, y el nivel de estudios, determinando que los hombres jubilados con mayor nivel de estudios consumen menos tabaco, y, por tanto, estarían inicialmente menos predispuestos a padecer enfermedades**_.
+
+<br>
+
+<center>
+
+![](https://statics-cuidateplus.marca.com/cms/styles/natural/azblob/hombre-fumando.jpg.webp?itok=AjklXll-){width=400px}
+
