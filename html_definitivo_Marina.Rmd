@@ -49,17 +49,17 @@ knitr::opts_chunk$set(echo = FALSE)
 <font size="4">  
 El motivo de la aparición de la mayoría de las enfermedades o problemas de 
 salud existentes hoy en día sigue siendo todo un misterio en muchos casos.
-Su asociación de diversos factores o sus relaciones de causalidad no se 
+La asociación de diversos factores o sus relaciones de causalidad, no se 
 encuentran en su mayoría bien definidas, y, por consiguiente, comprobadas.
 
-El sexo, la edad o el estilo de vida son los factores más conocidos que marcan
+El sexo, la edad o el estilo de vida, son los factores más conocidos que marcan
 una relación más directa en la búsqueda de explicaciones biológicas de las 
 enfermedades, que permitirán crear una base para su consiguiente tratamiento.
 El estado de salud de la población, española en nuestro caso, y según el INE, indica unos porcentajes de:
 <br>
 <div class="column-left">
- + Un 79,3% de hombres y un 71,9% de mujeres valoran su estado de salud como muy bueno o bueno en menores de 15 años.
- + Un 93,9% de hombres y un 90,7% de mujeres perciben su estado de salud como bueno en el grupo de 15 a 24 años.
+ + Un 79,3% de hombres y un 71,9% de mujeres, valoran su estado de salud como muy bueno o bueno en menores de 15 años.
+ + Un 93,9% de hombres y un 90,7% de mujeres, perciben su estado de salud como bueno en el grupo de 15 a 24 años.
   + Un 72,2% de hombres y 67,9% de mujeres en el grupo de 55 a 64 años.
   
 </div class="column-left"></font>
