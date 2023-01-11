@@ -39,23 +39,6 @@ GraficaHT <- ggplot(data = caso3aSinDupHombresTotal, aes(x = `Enfermos en porcen
   geom_point(aes(colour = `Actividad económica`))
 #GraficaHT
 
-```
-<font size="6"> 
-  <span style="color:cadetblue">
-  <span style="color: RED">
-  *RESPECTO A LAS MUJERES *
-  </span>
-  
-  </font>
-  <br>
-  ```{r,  fig.height=3, fig.dim=3}
-GraficaMT
-#graficaHombres
-
-
-
-
-
 
 
 
