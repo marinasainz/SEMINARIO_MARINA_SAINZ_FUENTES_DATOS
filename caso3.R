@@ -1,6 +1,6 @@
-#CASO 3: RELACION ENTRE EL CONSUMO DE TABACO CON ESTUDIANTES, ASOCIADOS A
+#CASO 3****: RELACION ENTRE EL CONSUMO DE TABACO CON ESTUDIANTES, ASOCIADOS A
 #UNA EDAD ENTRE 15 Y 24 AÑOS, RESPECTO AL SEXO
-
+#finalmente no lo inclui en la presentacion
 #wait: CASO MUJERES
 #CASO 1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
